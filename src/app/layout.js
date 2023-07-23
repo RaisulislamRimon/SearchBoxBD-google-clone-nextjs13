@@ -4,8 +4,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'SearchBoxBD-Google Clone NextJs13',
-  description: 'SearchBoxBD-Google Clone NextJs13',
+  title: 'Search Box - Google Clone Next Js 13',
+  description: 'Search Box - Google Clone Next Js 13',
 }
 
 export default function RootLayout({ children }) {
