@@ -1,10 +1,27 @@
 import HomeFooter from "@/components/HomeFooter";
 import HomeHeader from "@/components/HomeHeader";
+import HomeSearch from "@/components/HomeSearch";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div>
+      {/* header */}
       <HomeHeader />
+
+      {/* body */}
+      <div className="flex flex-col items-center mt-24">
+        <Image
+          src="/search_box.png"
+          width={300}
+          height={100}
+          alt="Search_box Logo"
+          className="cursor-pointer"
+        />
+        <HomeSearch />
+      </div>
+
+      {/* footer */}
       <HomeFooter />
     </div>
   )
