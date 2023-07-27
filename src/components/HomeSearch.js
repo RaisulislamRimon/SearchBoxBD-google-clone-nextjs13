@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 
 export default function HomeSearch() {
   const [input, setInput] = useState('');
+  const [data, setData] = useState('');
   const router = useRouter();
 
   // console.log('input ', input);
@@ -19,6 +20,20 @@ export default function HomeSearch() {
     // console.log('input ', input);
     if (!input.trim()) return;
     router.push(`/search/web?searchTerm=${input}`);
+  };
+
+  const handleRandomSearch = (e) => {
+    e.preventDefault();
+    fetch('https://random-word-api.herokuapp.com/word')
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data[0]);
+        console.log(data[0]);
+      })
+      .catch((error) => console.log(error));
+    if (data) {
+      router.push(`/search/web?searchTerm=${data}`);
+    } else return;
   };
   return (
     <div>
@@ -42,7 +57,9 @@ export default function HomeSearch() {
         <button className="btn" onClick={handleSubmit}>
           Google Search
         </button>
-        <button className="btn">I&apos;m Feeling Lucky</button>
+        <button className="btn" onClick={handleRandomSearch}>
+          I&apos;m Feeling Lucky
+        </button>
       </div>
     </div>
   );
