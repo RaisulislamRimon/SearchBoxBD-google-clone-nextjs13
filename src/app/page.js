@@ -1,7 +1,7 @@
-import HomeFooter from "@/components/HomeFooter";
-import HomeHeader from "@/components/HomeHeader";
-import HomeSearch from "@/components/HomeSearch";
-import Image from "next/image";
+import HomeFooter from '@/components/HomeFooter';
+import HomeHeader from '@/components/HomeHeader';
+import HomeSearch from '@/components/HomeSearch';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -10,13 +10,13 @@ export default function Home() {
       <HomeHeader />
 
       {/* body */}
-      <div className="flex flex-col items-center mt-24">
+      <div className="flex flex-col mt-24">
         <Image
           src="/search_box.png"
           width={300}
           height={100}
           alt="Search_box Logo"
-          className="cursor-pointer"
+          className="cursor-pointer mx-auto"
         />
         <HomeSearch />
       </div>
@@ -24,5 +24,5 @@ export default function Home() {
       {/* footer */}
       <HomeFooter />
     </div>
-  )
+  );
 }
