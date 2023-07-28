@@ -8,7 +8,6 @@ import Image from 'next/image';
 
 export default function HomeSearch() {
   const [input, setInput] = useState('');
-  const [data, setData] = useState('');
   const [randomSearchLoading, setRandomSearchLoading] = useState(false);
   const router = useRouter();
 
@@ -24,16 +23,14 @@ export default function HomeSearch() {
     router.push(`/search/web?searchTerm=${input}`);
   };
 
-  const handleRandomSearch = (e) => {
+  async function handleRandomSearch() {
     setRandomSearchLoading(true);
-    fetch('https://random-word-api.herokuapp.com/word')
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data[0]);
-      })
+    const response = await fetch('https://random-word-api.herokuapp.com/word')
+      .then((res) => res.json())
+      .then((data) => data[0])
       .catch((error) => console.log(error));
-    if (!data) return;
-    router.push(`/search/web?searchTerm=${data}`);
+    if (!response) return;
+    router.push(`/search/web?searchTerm=${response}`);
     setRandomSearchLoading(false);
   };
   return (
@@ -59,19 +56,15 @@ export default function HomeSearch() {
           Google Search
         </button>
         <button className="btn" onClick={handleRandomSearch}>
-          {/* {randomSearchLoading ?
-           <Image src="loading.svg" alt="loading" height={100} width={100} />
-           'Loading...' : "I&apos;m Feeling Lucky"} */}
           {randomSearchLoading ? (
             <img
               src="loading.svg"
               alt="loading..."
-              className="h-6 w-6 mx-auto"
+              className="h-6 mx-auto"
             />
           ) : (
             "I'm Feeling Lucky"
           )}
-          {/* {randomSearchLoading ? 'Loading...' : `I'm Feeling Lucky`} */}
         </button>
       </div>
     </div>
