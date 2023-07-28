@@ -4,10 +4,12 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { BsFillMicFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function HomeSearch() {
   const [input, setInput] = useState('');
   const [data, setData] = useState('');
+  const [randomSearchLoading, setRandomSearchLoading] = useState(false);
   const router = useRouter();
 
   // console.log('input ', input);
@@ -24,6 +26,7 @@ export default function HomeSearch() {
 
   const handleRandomSearch = (e) => {
     e.preventDefault();
+    setRandomSearchLoading(true);
     fetch('https://random-word-api.herokuapp.com/word')
       .then((response) => response.json())
       .then((data) => {
@@ -31,9 +34,9 @@ export default function HomeSearch() {
         console.log(data[0]);
       })
       .catch((error) => console.log(error));
-    if (data) {
-      router.push(`/search/web?searchTerm=${data}`);
-    } else return;
+    if (!data) return;
+    router.push(`/search/web?searchTerm=${data}`);
+    setRandomSearchLoading(false);
   };
   return (
     <div>
@@ -58,7 +61,10 @@ export default function HomeSearch() {
           Google Search
         </button>
         <button className="btn" onClick={handleRandomSearch}>
-          I&apos;m Feeling Lucky
+          {/* {randomSearchLoading ? */}
+          {/* <Image src="./loading.svg" alt="loading" height={500} width={500} /> */}
+          {/* 'Loading...' : "I&apos;m Feeling Lucky"} */}
+          {randomSearchLoading ? 'Loading...' : `I'm Feeling Lucky`}
         </button>
       </div>
     </div>
