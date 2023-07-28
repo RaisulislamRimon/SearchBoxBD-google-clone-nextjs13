@@ -4,7 +4,6 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { BsFillMicFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 
 export default function HomeSearch() {
   const [input, setInput] = useState('');
