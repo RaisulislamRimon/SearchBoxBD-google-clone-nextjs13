@@ -21,8 +21,8 @@ export default function Home() {
         <HomeSearch />
       </div>
 
-      {/* footer */}
-      <HomeFooter />
+      {/* footer
+      <HomeFooter /> */}
     </div>
   );
 }
