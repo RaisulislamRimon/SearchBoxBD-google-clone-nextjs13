@@ -1,37 +1,32 @@
-'use client';
+"use client";
 
-import { AiOutlineSearch } from 'react-icons/ai';
-import { BsFillMicFill } from 'react-icons/bs';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { AiOutlineSearch } from "react-icons/ai";
+import { BsFillMicFill } from "react-icons/bs";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function HomeSearch() {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [randomSearchLoading, setRandomSearchLoading] = useState(false);
   const router = useRouter();
 
-  // console.log('input ', input);
   const handleSubmit = (e) => {
-    // function handleSubmit(e) {
     e.preventDefault();
-    // const form = e.target;
-    // const searchInput = form.searchInput.value;
-    // console.log('searchInput ', searchInput);
-    // console.log('input ', input);
+
     if (!input.trim()) return;
     router.push(`/search/web?searchTerm=${input}`);
   };
 
   async function handleRandomSearch() {
     setRandomSearchLoading(true);
-    const response = await fetch('https://random-word-api.herokuapp.com/word')
+    const response = await fetch("https://random-word-api.herokuapp.com/word")
       .then((res) => res.json())
       .then((data) => data[0])
       .catch((error) => console.log(error));
     if (!response) return;
     router.push(`/search/web?searchTerm=${response}`);
     setRandomSearchLoading(false);
-  };
+  }
   return (
     <div>
       <form
@@ -56,11 +51,7 @@ export default function HomeSearch() {
         </button>
         <button className="btn" onClick={handleRandomSearch}>
           {randomSearchLoading ? (
-            <img
-              src="loading.svg"
-              alt="loading..."
-              className="h-6 mx-auto"
-            />
+            <img src="loading.svg" alt="loading..." className="h-6 mx-auto" />
           ) : (
             "I'm Feeling Lucky"
           )}
