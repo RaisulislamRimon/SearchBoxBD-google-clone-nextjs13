@@ -1,4 +1,4 @@
-import HomeFooter from "@/components/HomeFooter";
+import HomeFooter from "@/components/Footer";
 import HomeHeader from "@/components/HomeHeader";
 import HomeSearch from "@/components/HomeSearch";
 import Image from "next/image";
