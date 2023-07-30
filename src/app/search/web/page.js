@@ -9,12 +9,21 @@ export default async function WebSearchPage({ searchParams }) {
   
   const data = await response.json();
   const results = data?.items;
-  // console.log(data);
+  const totalResults = data?.searchInformation?.totalResults;
+  // console.log(data?.searchInformation?.totalResults);
   // console.log(results);
   // console.log(searchParams?.searchTerm);
   
   return (
     <>
+      {
+        totalResults === '0' && 
+        <div className="text-2xl font-bold text-red-500 text-center pt-20">
+          <h1 className="">
+            No result found...
+          </h1>
+        </div>
+      }
       { 
         results && results.map(result => 
           <div key={result?.title} className="border border-gray-300 p-4 m-4 rounded-lg">
@@ -26,7 +35,6 @@ export default async function WebSearchPage({ searchParams }) {
           </div>
         )
       }
-      <h1>WebSearchPage</h1>
     </>
   );
 }
