@@ -9,10 +9,17 @@ export default function WebSearchResults({ results }) {
         {results?.searchInformation?.formattedSearchTime} seconds)
       </p>
       {results?.items?.map((result) => (
-        <div className="" key={result?.link}>
-          <div className="">
-            <Link href={result?.link}>{result?.formattedUrl}</Link>
-            <Link href={result?.link}>{result?.title}</Link>
+        <div className="mb-8 max-w-xl" key={result?.link}>
+          <div className="group">
+            <Link className="text-sm truncate" href={result?.link}>
+              {result?.formattedUrl}
+            </Link>
+            <Link
+              className="group-hover:underline decoration-blue-800"
+              href={result?.link}
+            >
+              {result?.title}
+            </Link>
           </div>
           <p>{parse(result?.htmlSnippet)}</p>
         </div>
