@@ -45,7 +45,7 @@ export default function HomeSearch() {
         />
         <BsFillMicFill className="text-xl text-gray-500 mr-3" />
       </form>
-      <div className="flex flex-col space-y-2 sm:space-y-0 sm:space-x-4 justify-center items-center sm:flex-row mt-8">
+      <div className="flex flex-col space-y-2 sm:space-y-0 sm:space-x-4 justify-center items-center sm:flex-row mt-8 mb-48">
         <button className="btn" onClick={handleSubmit}>
           Google Search
         </button>
