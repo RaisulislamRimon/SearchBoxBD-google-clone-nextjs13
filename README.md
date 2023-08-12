@@ -45,6 +45,7 @@ Install the required dependencies:
     npm install
 
 #### Usage
+------------------------
 
 After installing the dependencies, you can start the application by running:
 
